@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const { Songs } = require("../models");
+const { Song } = require("../models");
 
 router.get("/", async (req, res, next) => {
   try {
-    const songs = await Songs.findAll();
+    const songs = await Song.findAll();
     res.json(songs);
   } catch (err) {
     next(err);
@@ -12,7 +12,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const id = Number(req.params.id);
-    const song = await Songs.findByPk(id);
+    const song = await Song.findByPk(id);
     if (!song) {
       return res.status(404).json({ error: "Song not found" });
     }
@@ -24,7 +24,7 @@ router.get("/:id", async (req, res, next) => {
 router.patch("/:id", async (req, res, next) => {
   try {
     const id = Number(req.params.id);
-    const song = await Songs.findByPk(id);
+    const song = await Song.findByPk(id);
     if (!song) {
       return res.status(404).json({ error: "Song not found" });
     }
@@ -37,7 +37,7 @@ router.patch("/:id", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   try {
     const id = Number(req.params.id);
-    const song = await Songs.findByPk(id);
+    const song = await Song.findByPk(id);
     if (!song) {
       return res.status(404).json({ error: "Song not found" });
     }
