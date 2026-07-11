@@ -1,8 +1,8 @@
-const Playlists = require('./Playlists');
-const Songs = require('./Songs');
+const Playlist = require('./Playlist');
+const Song = require('./Song');
 const db = require('../db');
 
-Songs.hasMany(Playlists);
-Playlists.belongsTo(Songs);
+Playlist.hasMany(Song);
+Song.belongsTo(Playlist);
 
-module.exports = {db, Songs, Playlists}
+module.exports = {db, Song, Playlist}

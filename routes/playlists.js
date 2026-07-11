@@ -1,9 +1,9 @@
 const router = require('express').Router() 
-const { Playlists } = require("../models")
+const { Playlist } = require("../models")
 
 router.get("/", async (req, res, next) => {
     try{
-        const playlist = await Playlists.findAll()
+        const playlist = await Playlist.findAll()
         res.json(playlist)
     }catch(err){
         next(err)
@@ -13,7 +13,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
     try{
         const id = Number(req.params.id)
-        const playlist = await Playlists.findByPK(id)
+        const playlist = await Playlist.findByPK(id)
         res.json(playlist) 
     }catch(err){
         next(err)
@@ -22,7 +22,7 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
     try{
-        const playlist = await Playlists.create(req.body)
+        const playlist = await Playlist.create(req.body)
         res.json(playlist)
     }catch(err){
         next(err)
@@ -32,7 +32,7 @@ router.post("/", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
     try{
         const id = Number(req.params.id)
-        const playlist = await Playlists.findByPK(id)
+        const playlist = await Playlist.findByPK(id)
         res.json(playlist)
     }catch(err){
         next(err)
