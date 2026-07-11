@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const { Playlists, Songs } = require("../models");
+const { Playlist, Song } = require("../models");
 
 router.get("/", async (req, res, next) => {
   try {
-    const playlist = await Playlists.findAll();
+    const playlist = await Playlist.findAll();
     res.json(playlist);
   } catch (err) {
     next(err);
@@ -13,7 +13,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const id = Number(req.params.id);
-    const playlist = await Playlists.findByPk(id, { include: Songs });
+    const playlist = await Playlist.findByPk(id, { include: Song });
     if (!playlist) {
       return res.status(404).json({ error: "Playlist not found" });
     }
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const playlist = await Playlists.create(req.body);
+    const playlist = await Playlist.create(req.body);
     res.json(playlist);
   } catch (err) {
     next(err);
@@ -35,7 +35,7 @@ router.post("/", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   try {
     const id = Number(req.params.id);
-    const playlist = await Playlists.findByPk(id);
+    const playlist = await Playlist.findByPk(id);
     if (!playlist) {
       return res.status(404).json({ error: "Playlist not found" });
     }
@@ -49,7 +49,7 @@ router.delete("/:id", async (req, res, next) => {
 router.post("/:id/songs", async (req, res, next) => {
   try {
     const playlistId = Number(req.params.id);
-    const song = await Songs.create({ ...req.body, playlistId });
+    const song = await Song.create({ ...req.body, playlistId });
     res.status(201).json(song);
   } catch (err) {
     next(err);
