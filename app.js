@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = 8000; //chrome blocked 6000 -_-
+const PORT = process.env.PORT; //required for the cloud server
 const { db } = require("./models");
 const playlistRouter = require("./routes/playlists");
 const songsRouter = require("./routes/songs");
