@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT; //required for the cloud server
+const PORT = process.env.PORT||8000; //required for the cloud server
+require('dotenv').config()
+console.log('>>>>>>>>>>>>>>>>>>>>.', process.env.DATABASE_URL)
+
 const { db } = require("./models");
 const playlistRouter = require("./routes/playlists");
 const songsRouter = require("./routes/songs");
