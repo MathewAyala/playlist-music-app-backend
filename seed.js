@@ -18,19 +18,19 @@ async function seed() {
     {
       title: "Many Men",
       artist: "50 cent",
-      duration: 210,
+      // duration: 210,
       playlistId: hipHop.id,
     },
     {
       title: "Don't Stop 'Til You Get Enough",
       artist: "Michael Jackson",
-      duration: 240,
+      // duration: 240,
       playlistId: pop.id,
     },
     {
       title: "Welcome To The Party",
       artist: "Pop Smoke",
-      duration: 120,
+      // duration: 120,
       playlistId: hipHop.id,
     },
     { title: "Numb", artist: "Linkin Park" },

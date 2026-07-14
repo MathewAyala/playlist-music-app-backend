@@ -4,7 +4,7 @@ const db = require("../db");
 const Song = db.define("song", {
   title: { type: DataTypes.STRING, allowNull: false },
   artist: { type: DataTypes.STRING, allowNull: false },
-  duration: { type: DataTypes.INTEGER, defaultValue: 180 },
+//   duration: { type: DataTypes.INTEGER, defaultValue: 180 },
 });
 
 module.exports = Song;
