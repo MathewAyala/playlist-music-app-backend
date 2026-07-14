@@ -1,19 +1,18 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT||8000; //required for the cloud server
-require('dotenv').config()
-console.log('>>>>>>>>>>>>>>>>>>>>.', process.env.DATABASE_URL)
+const PORT = process.env.PORT || 8000; //required for the cloud server
+require("dotenv").config();
+console.log(">>>>>>>>>>>>>>>>>>>>.", process.env.DATABASE_URL);
 
 const { db } = require("./models");
 const playlistRouter = require("./routes/playlists");
 const songsRouter = require("./routes/songs");
-const morgan = require('morgan')
-const cors = require('cors');
-
+const morgan = require("morgan");
+const cors = require("cors");
 
 app.use(express.json());
 app.use(cors());
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 
 async function logger(req, res, next) {
   await console.log("Checking request method", req.method, req.originalUrl);

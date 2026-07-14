@@ -1,9 +1,10 @@
-const {DataTypes}=require('sequelize')
-const db = require('../db');
+const { DataTypes } = require("sequelize");
+const db = require("../db");
 
-const Song = db.define('song', {
-    title: {type: DataTypes.STRING, allowNull: false},
-    artist: {type: DataTypes.STRING, allowNull: false},
-})
+const Song = db.define("song", {
+  title: { type: DataTypes.STRING, allowNull: false },
+  artist: { type: DataTypes.STRING, allowNull: false },
+  duration: { type: DataTypes.INTEGER, defaultValue: 180 },
+});
 
-module.exports = Song ;
+module.exports = Song;
