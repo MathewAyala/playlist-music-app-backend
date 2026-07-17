@@ -12,15 +12,21 @@ const cors = require("cors");
 
 app.use(express.json());
 app.use(cors());
-app.use(morgan("dev"));
+app.use(morgan());
 
 async function logger(req, res, next) {
   await console.log("Checking request method", req.method, req.originalUrl);
   next();
 }
+
 app.use(logger);
 app.use("/playlists", playlistRouter);
 app.use("/songs", songsRouter);
+
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(500).send("Something broke");
+});
 
 async function startApp() {
   await db.sync();
